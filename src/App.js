@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./Components/MainPage/MainPage";
+import Board from "./Components/MainPage/Board/Board";
+import Result from "./Components/Result/Result";
+import logo from "./Assets/Images/congratulations.png";
+import oopsLogo from "./Assets/Images/oops.png";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "./App.css";
 
-function App() {
+
+const App = () => {
+  const [status , setStatus] = useState(null);
+  const [img , setImg] = useState(null);
+
+  const theWinner = (winner) => {
+    if(winner === "Draw"){
+      const newStatus = "Match " + winner;
+      setStatus(newStatus);
+      setImg(oopsLogo);
+    }
+    else {
+      const newStatus = "Winner: " + winner;
+      setStatus(newStatus);
+      setImg(logo);
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage />}></Route>
+        <Route path="/board" element={<Board theWinner={theWinner} />}></Route>
+        <Route path="/result" element={<Result status={status} img={img} />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
