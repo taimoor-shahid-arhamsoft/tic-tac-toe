@@ -16,12 +16,12 @@ const App = () => {
 
   const theWinner = (winner) => {
     if(winner === "Draw"){
-      const newStatus = "Match " + winner;
+      const newStatus = winner;
       setStatus(newStatus);
       setImg(oopsLogo);
     }
     else {
-      const newStatus = "Winner: " + winner;
+      const newStatus = winner;
       setStatus(newStatus);
       setImg(logo);
     }

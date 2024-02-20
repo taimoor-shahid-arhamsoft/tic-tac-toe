@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../Assets/Images/logo.png";
@@ -8,11 +8,14 @@ import Square from "../Square/Square";
 
 const Board = ({ theWinner }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [durationInSeconds, setDurationInSeconds] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const quitModalRef = useRef(null);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
+  const playerOne = location.state ? location.state.playerOne : "";
+  const playerTwo = location.state ? location.state.playerTwo : "";
 
   // tab kills and reload method
   useEffect(() => {
@@ -27,6 +30,9 @@ const Board = ({ theWinner }) => {
       window.removeEventListener("beforeunload", handleUnload);
     };
   }, [showModal]);
+
+  console.log("heloo", playerOne)
+  console.log("heloo2", playerTwo)
 
   // timer
   useEffect(() => {
@@ -75,10 +81,10 @@ const Board = ({ theWinner }) => {
     const winner = calculateWinner(nextSquares);
     if (winner) {
       theWinner(winner);
-      navigate("/result");
+      navigate("/result", { state: { playerOne: playerOne, playerTwo: playerTwo } });
     } else if (allSquaresFilled) {
       theWinner("Draw");
-      navigate("/result");
+      navigate("/result", { state: { playerOne: playerOne, playerTwo: playerTwo } });
     }
   };
 
@@ -202,15 +208,15 @@ const Board = ({ theWinner }) => {
           </div>
           <div className="player-option">
             <h4>
-              Player 1 : <span className="x-mark">X</span>
+              Player 1 : <span className="player-name">{playerOne}</span><span className="x-mark">(X)</span>
             </h4>
             <h4>
-              Player 2 : <span className="o-mark">O</span>
+              Player 2 : <span className="player-name">{playerTwo}</span><span className="o-mark">(O)</span>
             </h4>
           </div>
         </div>
         <div className="turn text-center">
-          <h3>{xIsNext ? "Player 1 Turn" : "Player 2 Turn"}</h3>
+          <h3>{xIsNext ? `${playerOne} Turn` : `${playerTwo} Turn`}</h3>
         </div>
       </div>
     </div>

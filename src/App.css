@@ -20,6 +20,11 @@ body {background: #204d64;color: #fff;margin: 0;padding: 0 30px;}
 .game.logo {max-width: 220px;margin: 0 auto 11px;}
 .game-header .game.logo{max-width: 150px;position: absolute;top: 15px;left: 20px;}
 .modal-backdrop {--bs-backdrop-opacity: 0.7;}
+.game-container .winner-tag h3 {text-transform: capitalize;}
+/*form-control*/
+.game-container .form-control {background: #2e6b8a;color: #fff;border: none;}
+.game-container .form-control:focus {color: #fff;background-color: #2e6b8a;border-color: none;outline: 0;box-shadow: none;}
+.game-container .form-control::placeholder{color: #fff;opacity: 0.6;}
 /*quit modal*/
 #quitModal {transform: none;height: 100vh;margin: 0 auto;display: flex;justify-content: center;align-items: center;width: 100%;}
 #quitModal .btn-close {position: absolute;right: 17px;top: 17px;color: #fff;font-size: 12px;background-image: url("./Assets/Images/download.svg");opacity: 1;background-color: red;padding: 5px;border-radius: 50%;}
@@ -36,12 +41,13 @@ body {background: #204d64;color: #fff;margin: 0;padding: 0 30px;}
 /*board page*/
 .board .square {background: #11052c;color: #fff;border: none;width: 100px;height: 100px;margin: 1px;font-size: 30px;font-weight: bold;border-radius: 3px;}
 .board .game-section {position: relative;}
-.board .player-option {position: absolute;right: -200px;}
+.board .player-option {position: absolute;right: -330px;}
 .board .x-mark {color: #ff615f;display: inline-block;font-weight: bold;}
 .board .o-mark {color: #3ec5f4;display: inline-block;font-weight: bold;}
-.board h4 {display: flex;align-items: center;}
-.board h4 span {font-size: 40px;margin-left: 15px;}
+.board h4 span {font-size: 25px;margin-left: 15px;}
 .board .board-game {background: #2e6b8a;border-radius: 10px;padding: 20px;}
+.board .player-name {text-transform: capitalize;}
+.board .turn h3 {text-transform: capitalize;}
 /*result page*/
 .result{position: relative;}
 .result .result-head {position: absolute;width: 100%;}
