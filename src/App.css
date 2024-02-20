@@ -9,13 +9,6 @@ body {background: #204d64;color: #fff;margin: 0;padding: 0 30px;}
 #timer{background: #11052c;border-radius: 9px;font-size: 18px;color: #ffffff;padding: 10px 42px;outline: none;border: none;}
 .footer-button {background: #11052c;border-radius: 9px;font-size: 12px;color: #ffffff;padding: 8px 20px;outline: none;border: none;cursor: pointer;margin-top: 15px;display: inline-block;text-decoration: none;}
 .footer-button:disabled {background: #e7e8e9;color: #9fa3a9;cursor: not-allowed;}
-.game-container .active-question-no {font-size: 32px;line-height: 38px;font-weight: 500;color: #800080;margin: 0 0 15px;display: block;}
-.game-container h2 {font-size: 20px;font-weight: 500;margin: 0 0 30px;color: #ffc0cb;}
-.game-container ul {display: flex;flex-wrap: wrap;padding: 0;margin: 0;list-style: none;}
-.game-container ul li {width: 50%;margin: 0 0 10px;}
-.game-container ul li label {background: #fff;max-width: 96%;height: 40px;display: flex;justify-content: center;align-items: center;color: #11052c;border-radius: 50px;border: none;cursor: pointer;margin: 0 auto;user-select: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;}
-.game-container ul li input[type="checkbox"] {border-radius: 0px;display: none;}
-.game-container ul li label.checked{background: #204d64;color: #fff;border: none;}
 .quit-button {background: red;font-size: 14px;color: #ffffff;outline: none;border: none;border-radius: 50%;width: 35px;height: 35px;display: flex;align-items: center;justify-content: center;position: absolute;right: 20px;top: 20px;}
 .game.logo {max-width: 220px;margin: 0 auto 11px;}
 .game-header .game.logo{max-width: 150px;position: absolute;top: 15px;left: 20px;}
