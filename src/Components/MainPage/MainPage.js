@@ -8,9 +8,11 @@ const MainPage = () => {
   const [playerOne, setPlayerOne] = useState("");
   const [playerTwo, setPlayerTwo] = useState("");
 
+  const noUsers = playerOne !== "" && playerTwo !== "";
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (playerOne != "" && playerTwo != "") {
+    if (noUsers) {
       handleStartGame();
     }
   };
@@ -48,7 +50,7 @@ const MainPage = () => {
                     onChange={(e) => setPlayerTwo(e.target.value)}
                     maxLength="10"
                   />
-                  <button type="submit" className="text-button">
+                  <button type="submit" className="text-button" disabled={!noUsers}>
                     PLAY GAME
                   </button>
                 </form>
