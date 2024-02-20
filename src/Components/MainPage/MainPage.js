@@ -50,7 +50,11 @@ const MainPage = () => {
                     onChange={(e) => setPlayerTwo(e.target.value)}
                     maxLength="10"
                   />
-                  <button type="submit" className="text-button" disabled={!noUsers}>
+                  <button
+                    type="submit"
+                    className="text-button"
+                    disabled={!noUsers}
+                  >
                     PLAY GAME
                   </button>
                 </form>
