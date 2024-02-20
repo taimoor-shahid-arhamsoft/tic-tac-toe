@@ -13,7 +13,8 @@ const Board = ({ theWinner }) => {
   const [showModal, setShowModal] = useState(false);
   const quitModalRef = useRef(null);
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext] = useState(true);
+  const initialXIsNext = Math.random() < 0.5; 
+  const [xIsNext, setXIsNext] = useState(initialXIsNext);
   const playerOne = location.state ? location.state.playerOne : "";
   const playerTwo = location.state ? location.state.playerTwo : "";
 
