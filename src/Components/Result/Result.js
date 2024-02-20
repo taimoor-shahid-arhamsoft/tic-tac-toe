@@ -8,7 +8,6 @@ const Result = ({status, img}) => {
   const [result, setResult] = useState(null);
   const playerOne = location.state ? location.state.playerOne : "";
   const playerTwo = location.state ? location.state.playerTwo : "";
-  console.log("1: ", playerOne, "2: ", playerTwo)
 
   useEffect(() => {
     if(status === "Draw"){

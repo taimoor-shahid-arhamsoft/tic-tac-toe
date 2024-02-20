@@ -31,9 +31,6 @@ const Board = ({ theWinner }) => {
     };
   }, [showModal]);
 
-  console.log("heloo", playerOne)
-  console.log("heloo2", playerTwo)
-
   // timer
   useEffect(() => {
     const startTimer = () => {
