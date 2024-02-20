@@ -6,7 +6,7 @@ import logo from "../../../Assets/Images/logo.png";
 import { Modal, Button } from "react-bootstrap";
 import Square from "../../Square/Square";
 
-const Board = ({theWinner}) => {
+const Board = ({ theWinner }) => {
   const navigate = useNavigate();
   const [durationInSeconds, setDurationInSeconds] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -22,9 +22,7 @@ const Board = ({theWinner}) => {
         event.returnValue = "";
       }
     };
-
     window.addEventListener("beforeunload", handleUnload);
-
     return () => {
       window.removeEventListener("beforeunload", handleUnload);
     };
@@ -38,7 +36,6 @@ const Board = ({theWinner}) => {
       }, 1000);
       return id;
     };
-
     const interval = startTimer();
     return () => {
       clearInterval(interval);
@@ -63,8 +60,8 @@ const Board = ({theWinner}) => {
     navigate("/");
   };
 
- /*button click function*/
-const clickWorking = (i) => {
+  /*button click function*/
+  const clickWorking = (i) => {
     if (squares[i] || calculateWinner(squares)) {
       return null;
     }
@@ -72,40 +69,43 @@ const clickWorking = (i) => {
     nextSquares[i] = xIsNext ? "X" : "O";
     setSquares(nextSquares);
     setXIsNext(!xIsNext);
-  
-    const allSquaresFilled = nextSquares.every(square => square !== null);
-  
+
+    const allSquaresFilled = nextSquares.every((square) => square !== null);
+
     const winner = calculateWinner(nextSquares);
     if (winner) {
       theWinner(winner);
       navigate("/result");
-    } else if (allSquaresFilled) { 
+    } else if (allSquaresFilled) {
       theWinner("Draw");
       navigate("/result");
     }
-}
-
+  };
 
   const calculateWinner = (squares) => {
     const lines = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6]
-    ]
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
     const totalLines = lines.length;
-    for(let i=0; i < totalLines; i++){
-        const [a, b, c] = lines[i];
-        if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
-            return squares[a];
-        }
+    for (let i = 0; i < totalLines; i++) {
+      const [a, b, c] = lines[i];
+      if (
+        squares[a] &&
+        squares[a] === squares[b] &&
+        squares[a] === squares[c]
+      ) {
+        return squares[a];
+      }
     }
     return null;
-  }
+  };
 
   return (
     <div className="board">
@@ -134,9 +134,7 @@ const clickWorking = (i) => {
                 </div>
               </Modal.Header>
               <Modal.Body>
-                <Modal.Title>
-                  Are you sure you want to quit?
-                </Modal.Title>
+                <Modal.Title>Are you sure you want to quit?</Modal.Title>
                 <p>( your marked data would be lost in this case )</p>
               </Modal.Body>
               <Modal.Footer>
@@ -158,30 +156,61 @@ const clickWorking = (i) => {
           </div>
         </div>
         <div className="game-section d-flex align-items-center mb-4">
-            <div className="board-game">
-                <div className="board-row d-flex align-items-center">
-                    <Square value={squares[0]} onHandleClick={() => clickWorking(0)} />
-                    <Square value={squares[1]} onHandleClick={() => clickWorking(1)} />
-                    <Square value={squares[2]} onHandleClick={() => clickWorking(2)} />
-                </div>
-                <div className="board-row d-flex align-items-center">
-                    <Square value={squares[3]} onHandleClick={() => clickWorking(3)} />
-                    <Square value={squares[4]} onHandleClick={() => clickWorking(4)} />
-                    <Square value={squares[5]} onHandleClick={() => clickWorking(5)} />
-                </div>
-                <div className="board-row d-flex align-items-center">
-                    <Square value={squares[6]} onHandleClick={() => clickWorking(6)} />
-                    <Square value={squares[7]} onHandleClick={() => clickWorking(7)} />
-                    <Square value={squares[8]} onHandleClick={() => clickWorking(8)} />
-                </div>
+          <div className="board-game">
+            <div className="board-row d-flex align-items-center">
+              <Square
+                value={squares[0]}
+                onHandleClick={() => clickWorking(0)}
+              />
+              <Square
+                value={squares[1]}
+                onHandleClick={() => clickWorking(1)}
+              />
+              <Square
+                value={squares[2]}
+                onHandleClick={() => clickWorking(2)}
+              />
             </div>
-            <div className="player-option">
-                <h4>Player 1 : <span className="x-mark">X</span></h4>
-                <h4>Player 2 : <span className="o-mark">O</span></h4>
+            <div className="board-row d-flex align-items-center">
+              <Square
+                value={squares[3]}
+                onHandleClick={() => clickWorking(3)}
+              />
+              <Square
+                value={squares[4]}
+                onHandleClick={() => clickWorking(4)}
+              />
+              <Square
+                value={squares[5]}
+                onHandleClick={() => clickWorking(5)}
+              />
             </div>
+            <div className="board-row d-flex align-items-center">
+              <Square
+                value={squares[6]}
+                onHandleClick={() => clickWorking(6)}
+              />
+              <Square
+                value={squares[7]}
+                onHandleClick={() => clickWorking(7)}
+              />
+              <Square
+                value={squares[8]}
+                onHandleClick={() => clickWorking(8)}
+              />
+            </div>
+          </div>
+          <div className="player-option">
+            <h4>
+              Player 1 : <span className="x-mark">X</span>
+            </h4>
+            <h4>
+              Player 2 : <span className="o-mark">O</span>
+            </h4>
+          </div>
         </div>
         <div className="turn text-center">
-            <h3>{xIsNext ? "Player 1 Turn" : "Player 2 Turn"}</h3>
+          <h3>{xIsNext ? "Player 1 Turn" : "Player 2 Turn"}</h3>
         </div>
       </div>
     </div>
