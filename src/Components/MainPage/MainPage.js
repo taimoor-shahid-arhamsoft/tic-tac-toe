@@ -12,13 +12,14 @@ const MainPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(playerOne != "" && playerTwo != ""){
-      handleStartGame();
+      // handleStartGame();
+      navigate("/board", { state: { playerOne, playerTwo } });
     }
   };
 
-  const handleStartGame = () => {
-    navigate("/board", { state: { playerOne, playerTwo } });
-  };
+  // const handleStartGame = () => {
+  //   navigate("/board", { state: { playerOne, playerTwo } });
+  // };
 
   return (
     <div className="main-page">

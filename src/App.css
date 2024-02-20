@@ -25,6 +25,9 @@ body {background: #204d64;color: #fff;margin: 0;padding: 0 30px;}
 .game-container .form-control {background: #2e6b8a;color: #fff;border: none;}
 .game-container .form-control:focus {color: #fff;background-color: #2e6b8a;border-color: none;outline: 0;box-shadow: none;}
 .game-container .form-control::placeholder{color: #fff;opacity: 0.6;}
+.game-container .form-control:-webkit-autofill,
+.game-container .form-control:-webkit-autofill:hover, 
+.game-container .form-control:-webkit-autofill:focus{caret-color: white; -webkit-text-fill-color: #fff !important;-webkit-box-shadow: 0 0 0px 1000px #2e6b8a  inset !important;box-shadow: 0 0 0px 1000px #2e6b8a  inset !important; transition: background-color 5000s ease-in-out 0s !important;}
 /*quit modal*/
 #quitModal {transform: none;height: 100vh;margin: 0 auto;display: flex;justify-content: center;align-items: center;width: 100%;}
 #quitModal .btn-close {position: absolute;right: 17px;top: 17px;color: #fff;font-size: 12px;background-image: url("./Assets/Images/download.svg");opacity: 1;background-color: red;padding: 5px;border-radius: 50%;}
