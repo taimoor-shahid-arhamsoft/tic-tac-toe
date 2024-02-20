@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "./Components/MainPage/MainPage";
-import Board from "./Components/MainPage/Board/Board";
+import Board from "./Components/Board/Board";
 import Result from "./Components/Result/Result";
 import logo from "./Assets/Images/congratulations.png";
 import oopsLogo from "./Assets/Images/oops.png";
