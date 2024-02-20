@@ -2,9 +2,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../Assets/Images/logo.png";
 import { Modal, Button } from "react-bootstrap";
 import Square from "../Square/Square";
+import AppLogo from "../AppLogo/AppLogo";
+
+const initialXIsNext = Math.random() < 0.5;
 
 const Board = ({ theWinner }) => {
   const navigate = useNavigate();
@@ -13,7 +15,6 @@ const Board = ({ theWinner }) => {
   const [showModal, setShowModal] = useState(false);
   const quitModalRef = useRef(null);
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const initialXIsNext = Math.random() < 0.5; 
   const [xIsNext, setXIsNext] = useState(initialXIsNext);
   const playerOne = location.state ? location.state.playerOne : "";
   const playerTwo = location.state ? location.state.playerTwo : "";
@@ -79,10 +80,14 @@ const Board = ({ theWinner }) => {
     const winner = calculateWinner(nextSquares);
     if (winner) {
       theWinner(winner);
-      navigate("/result", { state: { playerOne: playerOne, playerTwo: playerTwo } });
+      navigate("/result", {
+        state: { playerOne: playerOne, playerTwo: playerTwo },
+      });
     } else if (allSquaresFilled) {
       theWinner("Draw");
-      navigate("/result", { state: { playerOne: playerOne, playerTwo: playerTwo } });
+      navigate("/result", {
+        state: { playerOne: playerOne, playerTwo: playerTwo },
+      });
     }
   };
 
@@ -115,9 +120,7 @@ const Board = ({ theWinner }) => {
     <div className="board">
       <div className="game-app">
         <div className="game-header">
-          <div className="game logo">
-            <img className="img-fluid" src={logo} alt="APP LOGO" />
-          </div>
+          <AppLogo />
           <div className="quit-button-in">
             <button
               type="button"
@@ -133,9 +136,7 @@ const Board = ({ theWinner }) => {
               ref={quitModalRef}
             >
               <Modal.Header closeButton>
-                <div className="modal-img">
-                  <img className="img-fluid" src={logo} alt="MODAL LOGO" />
-                </div>
+                <AppLogo />
               </Modal.Header>
               <Modal.Body>
                 <Modal.Title>Are you sure you want to quit?</Modal.Title>
@@ -206,10 +207,12 @@ const Board = ({ theWinner }) => {
           </div>
           <div className="player-option">
             <h4>
-              Player 1 : <span className="player-name">{playerOne}</span><span className="x-mark">(X)</span>
+              Player 1 : <span className="player-name">{playerOne}</span>
+              <span className="x-mark">(X)</span>
             </h4>
             <h4>
-              Player 2 : <span className="player-name">{playerTwo}</span><span className="o-mark">(O)</span>
+              Player 2 : <span className="player-name">{playerTwo}</span>
+              <span className="o-mark">(O)</span>
             </h4>
           </div>
         </div>

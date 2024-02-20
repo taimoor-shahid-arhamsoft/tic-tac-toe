@@ -3,50 +3,47 @@ import { useLocation } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { useState, useEffect } from "react";
 
-const Result = ({status, img}) => {
+const Result = ({ status, img }) => {
   const location = useLocation();
   const [result, setResult] = useState(null);
   const playerOne = location.state ? location.state.playerOne : "";
   const playerTwo = location.state ? location.state.playerTwo : "";
 
   useEffect(() => {
-    if(status === "Draw"){
-      const newResult = "Match " + status;
-      setResult(newResult);
+    let newResult = null;
+    if (status === "Draw") newResult = "Match " + status;
+    else if (status === "X" || status === "O") {
+      newResult =
+        "Winner: " +
+        (status === "X" ? playerOne : playerTwo) +
+        " ( " +
+        status +
+        " )";
     }
-    else if(status === "X"){
-      const newResult = "Winner: " + playerOne + " ( " + status + " )";
-      setResult(newResult);
-    }
-    else if(status === "O"){
-      const newResult = "Winner: " + playerTwo + " ( " + status + " )";
-      setResult(newResult);
-    }
-  }, [])
-  
-  
+    setResult(newResult);
+  }, []);
 
   return (
     <div className="result">
-        <Row>
-          <Col md={12}>
-            <div className="game-app">
-              <div className="game-container">
-                <div className="game logo">
-                  <img className="img-fluid" src={img} alt="APP LOGO" />
-                </div>
-                <div className="winner-tag text-center">
-                    <h3>{result}</h3>
-                </div>
-                <div className="result-buttons d-flex align-items-center justify-content-center">
-                    <Link className="footer-button" to="/">
-                        Play Again?
-                    </Link>
-                </div>
+      <Row>
+        <Col md={12}>
+          <div className="game-app">
+            <div className="game-container">
+              <div className="game logo">
+                <img className="img-fluid" src={img} alt="RESULT LOGO" />
+              </div>
+              <div className="winner-tag text-center">
+                <h3>{result}</h3>
+              </div>
+              <div className="result-buttons d-flex align-items-center justify-content-center">
+                <Link className="footer-button" to="/">
+                  Play Again?
+                </Link>
               </div>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };

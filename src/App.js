@@ -9,30 +9,31 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./App.css";
 
-
 const App = () => {
-  const [status , setStatus] = useState(null);
-  const [img , setImg] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [img, setImg] = useState(null);
 
   const theWinner = (winner) => {
-    if(winner === "Draw"){
+    if (winner === "Draw") {
       const newStatus = winner;
       setStatus(newStatus);
       setImg(oopsLogo);
-    }
-    else {
+    } else {
       const newStatus = winner;
       setStatus(newStatus);
       setImg(logo);
     }
-  }
+  };
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<MainPage />}></Route>
         <Route path="/board" element={<Board theWinner={theWinner} />}></Route>
-        <Route path="/result" element={<Result status={status} img={img} />}></Route>
+        <Route
+          path="/result"
+          element={<Result status={status} img={img} />}
+        ></Route>
       </Routes>
     </BrowserRouter>
   );
