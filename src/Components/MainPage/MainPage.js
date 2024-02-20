@@ -39,7 +39,7 @@ const MainPage = () => {
                     placeholder="Player 1" 
                     value={playerOne}
                     onChange={(e) => setPlayerOne(e.target.value)} 
-                    maxlength="10"
+                    maxLength="10"
                   />
                   <input 
                     type="text" 
@@ -49,7 +49,7 @@ const MainPage = () => {
                     placeholder="Player 2" 
                     value={playerTwo}
                     onChange={(e) => setPlayerTwo(e.target.value)} 
-                    maxlength="10"
+                    maxLength="10"
                   />
                   <button type="submit" className="text-button">PLAY GAME</button>
                 </form>
